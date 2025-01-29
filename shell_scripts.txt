@@ -1,0 +1,5 @@
+Sunbeam - general purpose command-line launcher
+nix shell github:pomdtr/sunbeam --command sunbeam
+
+Hoard - cli command organizer written in rust
+nix-shell -p hoard
