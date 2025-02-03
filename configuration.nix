@@ -136,13 +136,13 @@
     bat
     eza
     tlrc
-    lsd
+    #lsd
     btop
     fselect
     zoxide # better cd command
     fzf # Fuzzy finder
     chezmoi # dotfile manager
-    gowall #wallpaper convert to match a theme
+    #gowall #wallpaper convert to match a theme
     # libreoffice-fresh
     #               Editors
     zed-editor
