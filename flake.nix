@@ -14,7 +14,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, ghostty, ... }: {
+  outputs = { self, nixpkgs, nixos-cosmic, ghostty, nvf, ... }: {
+
+    packages."x86_64-linux".default =
+      (nvf.lib.neovimConfiguration {
+        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        modules = [./nvf-configuration.nix ];
+      }).neovim;
+
     nixosConfigurations = {
       # Replace "host" with your actual hostname
       jrd-t490 = nixpkgs.lib.nixosSystem {
@@ -27,6 +34,7 @@
           }
           nixos-cosmic.nixosModules.default
           ./configuration.nix
+          nvf.nixosModules.default
           {
             environment.systemPackages = [
               ghostty.packages.x86_64-linux.default
