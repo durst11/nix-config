@@ -154,6 +154,10 @@
     chromium
     #              Database
     #rainfrog
+    #              Nix Tools
+    nh
+    nix-output-monitor
+    nvd
   ];
 
   # set default editor
