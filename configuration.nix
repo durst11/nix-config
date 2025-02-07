@@ -136,14 +136,18 @@
     bat
     eza
     tlrc
+    fd
     #lsd
     btop
     fselect
     zoxide # better cd command
     fzf # Fuzzy finder
+    ffmpeg # (yazi)
+    poppler # pdf rendering (yazi)
     chezmoi # dotfile manager
     #gowall #wallpaper convert to match a theme
     # libreoffice-fresh
+    starship
     #               Editors
     zed-editor
     micro
