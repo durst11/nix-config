@@ -1,21 +1,13 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
 
-    nixos-cosmic = {
-      url = "github:lilyinstarlight/nixos-cosmic";
-      inputs.nixpkgs.follows = "nixpkgs"; # Ensure consistent nixpkgs
-    };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      # inputs.nixpkgs.follows = "nixpkgs"; # Ensure consistent nixpkgs
-    };
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
-  outputs = { self, nixpkgs, nixos-cosmic, ghostty, ... }: {
+  outputs = { self, nixpkgs, nixos-cosmic }: {
     nixosConfigurations = {
-      # Replace "host" with your actual hostname
+      # NOTE: change "host" to your system's hostname
       jrd-t490 = nixpkgs.lib.nixosSystem {
         modules = [
           {
@@ -26,11 +18,6 @@
           }
           nixos-cosmic.nixosModules.default
           ./configuration.nix
-          {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
-          }
         ];
       };
     };

@@ -124,45 +124,56 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    fastfetch
-    wget
-    curl
-    #               Terminals
-    warp-terminal
-    #               Terminal tools
-    git
-    bat
-    eza
-    tlrc
-    fd
-    #lsd
-    btop
-    fselect
-    zoxide # better cd command
-    fzf # Fuzzy finder
-    ffmpeg # (yazi)
-    poppler # pdf rendering (yazi)
-    chezmoi # dotfile manager
-    #gowall #wallpaper convert to match a theme
-    # libreoffice-fresh
-    starship
-    #               Editors
-    zed-editor
-    micro
-    #               File Managers
-    yazi
-    superfile
-    #              Browsers
-    chromium
-    #              Database
-    #rainfrog
-    #              Nix Tools
-    nh
-    nix-output-monitor
-    nvd
+
+  let
+    # Import unstable nixpkgs specifically for Ghostty
+    unstablePkgs = import (fetchTarball {
+      url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+      sha256 = "1imkffvs7h2c9ppf00jb6m5ah9zk46i3dqxmzm4x4dfdiw5c92wq"; # You should replace this with the actual hash
+    }) {};
+  in {
+    environment.systemPackages = with pkgs; [
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      fastfetch
+      wget
+      curl
+      #               Terminals
+      warp-terminal
+      #               Terminal tools
+      git
+      bat
+      eza
+      tlrc
+      fd
+      #lsd
+      btop
+      fselect
+      zoxide # better cd command
+      fzf # Fuzzy finder
+      ffmpeg # (yazi)
+      poppler # pdf rendering (yazi)
+      chezmoi # dotfile manager
+      #gowall #wallpaper convert to match a theme
+      # libreoffice-fresh
+      starship
+      #               Editors
+      zed-editor
+      micro
+      #               File Managers
+      yazi
+      superfile
+      #              Browsers
+      chromium
+      #              Database
+      #rainfrog
+      #              Nix Tools
+      nh
+      nix-output-monitor
+      nvd
+
+      unstablePkgs.ghostty
   ];
+}
 
   # set default editor
   # environment.variables.EDITOR = "micro";
