@@ -125,14 +125,16 @@
   # $ nix search wget
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  let
-    # Import unstable nixpkgs specifically for Ghostty
-    unstablePkgs = import (fetchTarball {
+  environment.systemPackages = with pkgs; let
+  # Import unstable nixpkgs for any that need to be the newest
+  # see last entry for syntax on how to make sure they are running on unstable
+  unstablePkgs = import (fetchTarball {
       url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-      sha256 = "1imkffvs7h2c9ppf00jb6m5ah9zk46i3dqxmzm4x4dfdiw5c92wq"; # You should replace this with the actual hash
-    }) {};
-  in {
-    environment.systemPackages = with pkgs; [
+      sha256 = "1imkffvs7h2c9ppf00jb6m5ah9zk46i3dqxmzm4x4dfdiw5c92wq";
+  }) {
+      system = pkgs.system;
+  };
+  in [
       #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       fastfetch
       wget
@@ -173,7 +175,7 @@
 
       unstablePkgs.ghostty
   ];
-}
+
 
   # set default editor
   # environment.variables.EDITOR = "micro";
