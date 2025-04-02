@@ -7,6 +7,7 @@
     nerd-fonts.ubuntu-mono
     nerd-fonts.space-mono
     nerd-fonts.dejavu-sans-mono
+    nerd-fonts.noto
   ];
 
   fonts.fontDir.enable = true;

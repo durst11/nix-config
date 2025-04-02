@@ -130,7 +130,9 @@
   # see last entry for syntax on how to make sure they are running on unstable
   unstablePkgs = import (fetchTarball {
       url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-      sha256 = "1imkffvs7h2c9ppf00jb6m5ah9zk46i3dqxmzm4x4dfdiw5c92wq";
+      #sha256 = "0328lh3ghdbglwd69774sx3an9ym7193xwvypa1gzbnw11a8frjq";
+      #sha256 = "0aa89pl1xs0kri9ixxg488n7riqi5n9ys89xqc0immyqshqc1d7f";
+      sha256 = "04glsr88dhs9w61nyfpn17dphkmn2kssaf603ndhp7sizcppl6ga";
   }) {
       system = pkgs.system;
   };
@@ -139,6 +141,7 @@
       neovim
       gcc # c compiler for neovim/lazynvim
       fastfetch
+      # countryfetch # only in unstable
       wget
       curl
       #               Terminals
@@ -151,6 +154,7 @@
       fd
       #lsd
       btop
+      gparted
       fselect
       zoxide # better cd command
       fzf # Fuzzy finder
@@ -176,6 +180,8 @@
       nvd
 
       unstablePkgs.ghostty
+      unstablePkgs.countryfetch
+
   ];
 
 
