@@ -141,6 +141,7 @@
       neovim
       gcc # c compiler for neovim/lazynvim
       fastfetch
+      gparted
       # countryfetch # only in unstable
       wget
       curl
