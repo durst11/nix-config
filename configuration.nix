@@ -130,9 +130,9 @@
   # see last entry for syntax on how to make sure they are running on unstable
   unstablePkgs = import (fetchTarball {
       url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-      #sha256 = "0328lh3ghdbglwd69774sx3an9ym7193xwvypa1gzbnw11a8frjq";
-      #sha256 = "0aa89pl1xs0kri9ixxg488n7riqi5n9ys89xqc0immyqshqc1d7f";
-      sha256 = "04glsr88dhs9w61nyfpn17dphkmn2kssaf603ndhp7sizcppl6ga";
+      #sha256 = "04glsr88dhs9w61nyfpn17dphkmn2kssaf603ndhp7sizcppl6ga";
+      #sha256 = "09dahi81cn02gnzsc8a00n945dxc18656ar0ffx5vgxjj1nhgsvy";
+      sha256 = "0b0j3m8i2amwzi374am7s3kkhf3dxrvqwgr1lk8csr1v7fw9z85q";
   }) {
       system = pkgs.system;
   };
@@ -149,6 +149,7 @@
       warp-terminal
       #               Terminal tools
       git
+      xan #csv tool
       bat
       eza
       tlrc
@@ -165,6 +166,7 @@
       #gowall #wallpaper convert to match a theme
       # libreoffice-fresh
       starship
+      serpl # search and replace tool
       #               Editors
       zed-editor
       micro
@@ -182,6 +184,9 @@
 
       unstablePkgs.ghostty
       unstablePkgs.countryfetch
+
+      # regname # not in nix yet - file renamere
+      # caps-log # not in nix yet Captian's Log small markdown journal
 
   ];
 
