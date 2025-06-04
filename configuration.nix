@@ -132,7 +132,8 @@
       url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
       #sha256 = "04glsr88dhs9w61nyfpn17dphkmn2kssaf603ndhp7sizcppl6ga";
       #sha256 = "09dahi81cn02gnzsc8a00n945dxc18656ar0ffx5vgxjj1nhgsvy";
-      sha256 = "0b0j3m8i2amwzi374am7s3kkhf3dxrvqwgr1lk8csr1v7fw9z85q";
+      #sha256 = "0b0j3m8i2amwzi374am7s3kkhf3dxrvqwgr1lk8csr1v7fw9z85q";
+      sha256 = "04c6dkshw07bm2isv7rvl6xgr4hn7hqznr0v2kww6zjfz4awk4a7";
   }) {
       system = pkgs.system;
   };
@@ -147,6 +148,7 @@
       curl
       #               Terminals
       warp-terminal
+      zellij #terminal multiplexer
       #               Terminal tools
       git
       xan #csv tool
@@ -154,12 +156,16 @@
       eza
       tlrc
       fd
+      dysk # tui for the filesystem
       #lsd
       btop
       gparted
       fselect
       zoxide # better cd command
       fzf # Fuzzy finder
+      ripgrep
+      ripgrep-all
+      igrep # interactive grep
       ffmpeg # (yazi)
       poppler # pdf rendering (yazi)
       chezmoi # dotfile manager
@@ -177,6 +183,7 @@
       chromium
       #              Database
       #rainfrog
+      pgcli
       #              Nix Tools
       nh
       nix-output-monitor
