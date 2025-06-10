@@ -130,15 +130,13 @@
   # see last entry for syntax on how to make sure they are running on unstable
   unstablePkgs = import (fetchTarball {
       url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-      #sha256 = "04glsr88dhs9w61nyfpn17dphkmn2kssaf603ndhp7sizcppl6ga";
-      #sha256 = "09dahi81cn02gnzsc8a00n945dxc18656ar0ffx5vgxjj1nhgsvy";
-      #sha256 = "0b0j3m8i2amwzi374am7s3kkhf3dxrvqwgr1lk8csr1v7fw9z85q";
-      sha256 = "04c6dkshw07bm2isv7rvl6xgr4hn7hqznr0v2kww6zjfz4awk4a7";
+      #sha256 = "04c6dkshw07bm2isv7rvl6xgr4hn7hqznr0v2kww6zjfz4awk4a7";
+      sha256 = "0dcslr2lwfaclfl4pmbwb3yw27bnvwlqiif394d3d66vyd163dvy";
   }) {
       system = pkgs.system;
+      config.allowUnfree = true;
   };
   in [
-      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       neovim
       gcc # c compiler for neovim/lazynvim
       fastfetch
@@ -147,7 +145,7 @@
       wget
       curl
       #               Terminals
-      warp-terminal
+      #warp-terminal
       zellij #terminal multiplexer
       #               Terminal tools
       git
@@ -159,7 +157,6 @@
       dysk # tui for the filesystem
       #lsd
       btop
-      gparted
       fselect
       zoxide # better cd command
       fzf # Fuzzy finder
@@ -184,6 +181,7 @@
       #              Database
       #rainfrog
       pgcli
+      gobang #tui database manangement in Rust
       #              Nix Tools
       nh
       nix-output-monitor
@@ -191,6 +189,8 @@
 
       unstablePkgs.ghostty
       unstablePkgs.countryfetch
+      unstablePkgs.warp-terminal
+      unstablePkgs.lazygit
 
       # regname # not in nix yet - file renamere
       # caps-log # not in nix yet Captian's Log small markdown journal
