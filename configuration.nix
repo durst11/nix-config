@@ -144,6 +144,7 @@
       # countryfetch # only in unstable
       wget
       curl
+      eget  #binary package manager
       #               Terminals
       #warp-terminal
       zellij #terminal multiplexer
@@ -178,6 +179,7 @@
       superfile
       #              Browsers
       chromium
+      chawan # Terminal Browser
       #              Database
       #rainfrog
       pgcli
@@ -186,7 +188,7 @@
       nh
       nix-output-monitor
       nvd
-
+      #               Undtable versions of software
       unstablePkgs.ghostty
       unstablePkgs.countryfetch
       unstablePkgs.warp-terminal
