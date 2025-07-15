@@ -131,7 +131,10 @@
   unstablePkgs = import (fetchTarball {
       url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
       #sha256 = "04c6dkshw07bm2isv7rvl6xgr4hn7hqznr0v2kww6zjfz4awk4a7";
-      sha256 = "0dcslr2lwfaclfl4pmbwb3yw27bnvwlqiif394d3d66vyd163dvy";
+      #sha256 = "0dcslr2lwfaclfl4pmbwb3yw27bnvwlqiif394d3d66vyd163dvy";
+      #sha256 = "11p1dpmm7nk15mb60m1ii4jywydy3g7x5qpyr9yarlzfl2c91x1z";
+      #sha256 = "0jki9azscc2ys89g4qjd61jhsgs3l46rcma7w0395nr3h3m0hn97";
+      sha256 = "1q04m02cghivl6wvh65qpyjqv09dqm7lq5qbq3v9s6lwwfdinx14";
   }) {
       system = pkgs.system;
       config.allowUnfree = true;
