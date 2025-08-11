@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, nixpkgs-unstable, ... }:
 
 {
   imports =
@@ -125,20 +125,24 @@
   # $ nix search wget
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = with pkgs; let
+#  environment.systemPackages = with pkgs; let
   # Import unstable nixpkgs for any that need to be the newest
   # see last entry for syntax on how to make sure they are running on unstable
-  unstablePkgs = import (fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-      #sha256 = "04c6dkshw07bm2isv7rvl6xgr4hn7hqznr0v2kww6zjfz4awk4a7";
-      #sha256 = "0dcslr2lwfaclfl4pmbwb3yw27bnvwlqiif394d3d66vyd163dvy";
-      #sha256 = "11p1dpmm7nk15mb60m1ii4jywydy3g7x5qpyr9yarlzfl2c91x1z";
-      #sha256 = "0jki9azscc2ys89g4qjd61jhsgs3l46rcma7w0395nr3h3m0hn97";
-      sha256 = "1q04m02cghivl6wvh65qpyjqv09dqm7lq5qbq3v9s6lwwfdinx14";
-  }) {
-      system = pkgs.system;
-      config.allowUnfree = true;
-  };
+#  unstablePkgs = import (fetchTarball {
+#      url = "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+      #sha256 = "09nmwsahc0zsylyk5vf6i62x4jfvwq4r2mk8j0lmr3zzk723dwj3";
+#      sha256 = "1krzkmqdpv2w5hq9nvq4q91i0x7mhpn3fx32rg0p1yyq7zsj61w8";
+#  }) {
+#      system = pkgs.system;
+#      config.allowUnfree = true;
+#  };
+#  in [
+ environment.systemPackages = with pkgs; let
+   # Use the flake input instead of fetchTarball
+   unstablePkgs = import nixpkgs-unstable {
+       system = pkgs.system;
+       config.allowUnfree = true;
+   };
   in [
       neovim
       gcc # c compiler for neovim/lazynvim
