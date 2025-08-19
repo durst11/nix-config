@@ -202,6 +202,7 @@
       unstablePkgs.countryfetch
       unstablePkgs.warp-terminal
       unstablePkgs.lazygit
+      unstablePkgs.uutils-coreutils
       #unstablePkgs.xnviewmp
 
       # regname # not in nix yet - file renamere
@@ -209,6 +210,19 @@
 
   ];
 
+  #  coreutils, findutils, diffutils and sudo with Rust reimplementations
+
+  # Optional: Create a system-wide override
+    nixpkgs.config.packageOverrides = pkgs: {
+      coreutils = pkgs.uutils-coreutils;
+    };
+
+  # Replace sudo with sudo-rs using the proper NixOS module
+   security.sudo-rs.enable = true;
+   security.sudo.enable = false;  # Disable regular sudo
+
+  # Your existing sudo configuration will work the same way
+   security.sudo-rs.wheelNeedsPassword = false; # example config
 
   # set default editor
   # environment.variables.EDITOR = "micro";
