@@ -21,7 +21,7 @@
   boot.loader.systemd-boot.configurationLimit = 10;
 
   # Zen Kernel
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_zen);
+  # boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_zen);
 
   networking.hostName = "jrd-t490"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -78,9 +78,17 @@
   # flatpak remote-add --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
   services.flatpak.enable = true;
 
+  # smb stuff
+  services.gvfs.enable = true;
+
   # Tailscale
-  services.tailscale.enable = true;
-  networking.firewall.checkReversePath = "loose";
+  #
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";  # or "both" if you're subnet routing
+  };
+  # services.tailscale.enable = true;
+  # networking.firewall.checkReversePath = "loose";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -125,6 +133,10 @@
   # $ nix search wget
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # ZFS support
+  boot.supportedFilesystems = [ "zfs" ];
+  networking.hostId = "6760176b"; # Replace with unique 8-character hex string
+
 #  environment.systemPackages = with pkgs; let
   # Import unstable nixpkgs for any that need to be the newest
   # see last entry for syntax on how to make sure they are running on unstable
@@ -144,6 +156,7 @@
        config.allowUnfree = true;
    };
   in [
+      networkmanager
       neovim
       gcc # c compiler for neovim/lazynvim
       fastfetch
@@ -222,7 +235,7 @@
    security.sudo.enable = false;  # Disable regular sudo
 
   # Your existing sudo configuration will work the same way
-   security.sudo-rs.wheelNeedsPassword = false; # example config
+  # security.sudo-rs.wheelNeedsPassword = false; # example config
 
   # set default editor
   # environment.variables.EDITOR = "micro";
@@ -239,6 +252,14 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    trustedInterfaces = [ "tailscale0" ];  # Trust the Tailscale interface
+    allowedUDPPorts = [ 41641 ];  # Tailscale's default port
+  };
+
+  boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
