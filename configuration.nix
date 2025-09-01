@@ -134,7 +134,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # ZFS support
-  boot.supportedFilesystems = [ "zfs" ];
+  boot.supportedFilesystems = [ "zfs" "cifs" ];
   networking.hostId = "6760176b"; # Replace with unique 8-character hex string
 
 #  environment.systemPackages = with pkgs; let
@@ -210,6 +210,9 @@
       nvd
       xnconvert
       xnviewmp
+      #              SMB/CIFS support
+      samba
+      cifs-utils
       #               Undtable versions of software
       unstablePkgs.ghostty
       unstablePkgs.countryfetch
