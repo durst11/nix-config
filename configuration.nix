@@ -209,7 +209,7 @@
       nix-output-monitor
       nvd
       xnconvert
-      xnviewmp
+      #xnviewmp
       #              SMB/CIFS support
       samba
       cifs-utils
@@ -231,6 +231,10 @@
   # Optional: Create a system-wide override
     nixpkgs.config.packageOverrides = pkgs: {
       coreutils = pkgs.uutils-coreutils;
+      # Override tailscale to disable failing tests in sandbox
+      tailscale = pkgs.tailscale.overrideAttrs (oldAttrs: {
+        doCheck = false;
+      });
     };
 
   # Replace sudo with sudo-rs using the proper NixOS module
@@ -255,6 +259,7 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+  programs.ssh.startAgent = true;
 
   networking.firewall = {
     enable = true;
