@@ -12,6 +12,7 @@
       ./fonts.nix
       #./flatpak.nix
       ./zsh.nix
+      ./openaudible.nix
     ];
 
   # Bootloader.
@@ -60,6 +61,7 @@
     variant = "";
   };
 
+  programs.openaudible.enable = true;
 
   # Enable the GNOME Desktop Environment.
   #services.xserver.displayManager.gdm.enable = true;
@@ -157,10 +159,12 @@
    };
   in [
       networkmanager
+      gearlever
       neovim
       gcc # c compiler for neovim/lazynvim
       fastfetch
       gparted
+      appimage-run
       # countryfetch # only in unstable
       wget
       curl
@@ -192,7 +196,7 @@
       starship
       serpl # search and replace tool
       #               Editors
-      zed-editor
+      zed-editor-fhs
       micro
       #               File Managers
       yazi
