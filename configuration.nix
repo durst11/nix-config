@@ -212,18 +212,17 @@
       nh
       nix-output-monitor
       nvd
-      xnconvert
-      #xnviewmp
+      bitwarden-desktop
       #              SMB/CIFS support
       samba
       cifs-utils
+      atuin
       #               Undtable versions of software
       unstablePkgs.ghostty
       unstablePkgs.countryfetch
       unstablePkgs.warp-terminal
       unstablePkgs.lazygit
       unstablePkgs.uutils-coreutils
-      #unstablePkgs.xnviewmp
 
       # regname # not in nix yet - file renamere
       # caps-log # not in nix yet Captian's Log small markdown journal
