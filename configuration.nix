@@ -217,6 +217,8 @@
       samba
       cifs-utils
       atuin
+      palemoon-bin
+      ladybird
       #               Undtable versions of software
       unstablePkgs.ghostty
       unstablePkgs.countryfetch
@@ -264,7 +266,7 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
   programs.ssh.startAgent = true;
-  
+
   # Disable GNOME GCR SSH agent to avoid conflicts with standard SSH agent
   services.gnome.gcr-ssh-agent.enable = false;
 
