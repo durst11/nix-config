@@ -130,6 +130,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "gradle-7.6.6"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -195,6 +198,8 @@
       # libreoffice-fresh
       starship
       serpl # search and replace tool
+      mcat
+      jrnl
       #               Editors
       zed-editor-fhs
       micro
