@@ -71,6 +71,8 @@
   #services.desktopManager.cosmic.enable = true;
   #services.displayManager.cosmic-greeter.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
 
   # Add flatpak
   #
@@ -221,6 +223,7 @@
       #              SMB/CIFS support
       samba
       cifs-utils
+      gvfs
       atuin
       palemoon-bin
       ladybird
