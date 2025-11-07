@@ -73,7 +73,6 @@
 
   services.gnome.gnome-keyring.enable = true;
 
-
   # Add flatpak
   #
   # external file does not work yet
